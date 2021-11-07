@@ -9,16 +9,17 @@ namespace TSB.Models.Messages
         public ExpandoObject Payload { get; set; }
     }
 
-    public class RequestHeader : IRequestHeader
+    public class RequestHeader : IRequestHeader<ExpandoObject>
     {
         public string BatchID { get; set; }
         public string MsgID { get; set; }
         public string Action { get; set; }
         public string FrnName { get; set; }
-        public string UserID { get; set; }
+        //public string UserID { get; set; }
         public string ClientIP { get; set; }
         public string ServerIP { get; set; }
         public DateTime? RequestTime { get; set; }
+        public ExpandoObject AuthData { get; set; }
     }
 
     /// <summary>
@@ -56,10 +57,10 @@ namespace TSB.Models.Messages
         /// </summary>
         string FrnName { get; set; }
 
-        /// <summary>
-        /// 使用者ID
-        /// </summary>
-        string UserID { get; set; }
+        ///// <summary>
+        ///// 使用者ID
+        ///// </summary>
+        //string UserID { get; set; }
 
         /// <summary>
         /// 使用者IP
@@ -75,5 +76,10 @@ namespace TSB.Models.Messages
         /// 請求時間
         /// </summary>
         DateTime? RequestTime { get; set; }
+    }
+
+    public interface IRequestHeader<TAuthData> : IRequestHeader
+    {
+        TAuthData AuthData { get; set; }
     }
 }

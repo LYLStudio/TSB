@@ -76,7 +76,8 @@
                             //db.SaveChanges();
                             #endregion
 
-                            var cust = db.CustMains.FirstOrDefault(model => model.CustPermID.Equals(rq.Header.UserID));
+                            var uid = $"{o.RQ.Header.AuthData.UserID}";
+                            var cust = db.CustMains.FirstOrDefault(model => model.CustPermID.Equals(uid));
 
                             if (Enum.TryParse<ContactInfoKind>($"{o.RQ.Payload.Type}", out var kind))
                             {

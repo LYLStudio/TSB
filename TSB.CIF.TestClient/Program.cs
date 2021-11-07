@@ -7,7 +7,7 @@ using TSB.CIF.TestClient.CIFManager;
 namespace TSB.CIF.TestClient
 {
     class Program
-    {       
+    {
         static async Task Main(string[] args)
         {
             var rq = new QueryContactInfoRq();
@@ -15,14 +15,17 @@ namespace TSB.CIF.TestClient
             rq.Header = new RequestHeader()
             {
                 BatchID = $"{Guid.NewGuid()}",
-                //Action = nameof(TestExpandoRq),
                 Action = rq.GetType().Name,
                 MsgID = $"{rq.GetType().Name}_{DateTime.Now:yyyyMMddHHmmssffff}",
                 FrnName = "HOME",
                 ClientIP = "127.0.0.1",
                 ServerIP = "128.0.0.1",
                 RequestTime = DateTime.Now,
-                UserID = "A234567890"
+                AuthData = new Dictionary<string, object>()
+                {
+                    { "UserID", "A234567890" },
+                    { "Token", "xxxxxxxxxxxxxxx_not_implement" }
+                }
             };
             rq.Payload = new Dictionary<string, object>()
             {

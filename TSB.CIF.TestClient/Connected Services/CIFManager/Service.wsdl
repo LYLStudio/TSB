@@ -130,20 +130,20 @@
       <xs:complexType name="RequestHeader">
         <xs:sequence>
           <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AuthData" nillable="true" type="q2:ArrayOfKeyValueOfstringanyType" />
           <xs:element minOccurs="0" name="BatchID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ClientIP" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FrnName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="MsgID" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RequestTime" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ServerIP" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="RequestHeader" nillable="true" type="tns:RequestHeader" />
       <xs:complexType name="ResponseBase">
         <xs:sequence>
           <xs:element minOccurs="0" name="Header" nillable="true" type="tns:ResponseHeader" />
-          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Payload" nillable="true" type="q2:ArrayOfKeyValueOfstringanyType" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Payload" nillable="true" type="q3:ArrayOfKeyValueOfstringanyType" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ResponseBase" nillable="true" type="tns:ResponseBase" />

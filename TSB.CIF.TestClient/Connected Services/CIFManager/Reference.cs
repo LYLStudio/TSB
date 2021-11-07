@@ -89,6 +89,9 @@ namespace TSB.CIF.TestClient.CIFManager {
         private string ActionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, object> AuthDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BatchIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -105,9 +108,6 @@ namespace TSB.CIF.TestClient.CIFManager {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ServerIPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -128,6 +128,19 @@ namespace TSB.CIF.TestClient.CIFManager {
                 if ((object.ReferenceEquals(this.ActionField, value) != true)) {
                     this.ActionField = value;
                     this.RaisePropertyChanged("Action");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, object> AuthData {
+            get {
+                return this.AuthDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthDataField, value) != true)) {
+                    this.AuthDataField = value;
+                    this.RaisePropertyChanged("AuthData");
                 }
             }
         }
@@ -206,19 +219,6 @@ namespace TSB.CIF.TestClient.CIFManager {
                 if ((object.ReferenceEquals(this.ServerIPField, value) != true)) {
                     this.ServerIPField = value;
                     this.RaisePropertyChanged("ServerIP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserIDField, value) != true)) {
-                    this.UserIDField = value;
-                    this.RaisePropertyChanged("UserID");
                 }
             }
         }

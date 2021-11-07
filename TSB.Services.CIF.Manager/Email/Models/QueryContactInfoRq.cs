@@ -5,8 +5,9 @@ namespace TSB.Services.CIF.Manager.Email.Models
     public class QueryContactInfoRq : RequestBase
     {
         /*
-         * Payload:
-         * Type: { TYPE }
+         * Header.AuthData: { UserID, Token }
+         * 
+         * Payload.Type:    { TYPE }
          *  TYPE [ EMAIL, CELLPHONE, ALL ]
          */
     }
