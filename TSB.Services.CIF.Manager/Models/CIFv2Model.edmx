@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CIFv2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustCellphone">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Cellphone" Type="varchar" MaxLength="16" />
+          <Property Name="CellphonePrevious" Type="varchar" MaxLength="16" />
+          <Property Name="IsVerified" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustMail">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="256" />
+          <Property Name="MailPrevious" Type="varchar" MaxLength="256" />
+          <Property Name="IsVerified" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustMain">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="CustPermID" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="CustStatus" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <Association Name="FK_CustCellphone_CustMain">
+          <End Role="CustMain" Type="Self.CustMain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustCellphone" Type="Self.CustCellphone" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustMain">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="CustCellphone">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustMail_CustMain">
+          <End Role="CustMain" Type="Self.CustMain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustMail" Type="Self.CustMail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustMain">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="CustMail">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CIFv2ModelStoreContainer">
+          <EntitySet Name="CustCellphone" EntityType="Self.CustCellphone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustMail" EntityType="Self.CustMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustMain" EntityType="Self.CustMain" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustCellphone_CustMain" Association="Self.FK_CustCellphone_CustMain">
+            <End Role="CustMain" EntitySet="CustMain" />
+            <End Role="CustCellphone" EntitySet="CustCellphone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustMail_CustMain" Association="Self.FK_CustMail_CustMain">
+            <End Role="CustMain" EntitySet="CustMain" />
+            <End Role="CustMail" EntitySet="CustMail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CIFv2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustCellphone">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cellphone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CellphonePrevious" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="IsVerified" Type="Boolean" />
+          <NavigationProperty Name="CustMain" Relationship="Self.FK_CustCellphone_CustMain" FromRole="CustCellphone" ToRole="CustMain" />
+        </EntityType>
+        <EntityType Name="CustMail">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="MailPrevious" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="IsVerified" Type="Boolean" />
+          <NavigationProperty Name="CustMain" Relationship="Self.FK_CustMail_CustMain" FromRole="CustMail" ToRole="CustMain" />
+        </EntityType>
+        <EntityType Name="CustMain">
+          <Key>
+            <PropertyRef Name="CustID" />
+          </Key>
+          <Property Name="CustID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustPermID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustStatus" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustCellphone" Relationship="Self.FK_CustCellphone_CustMain" FromRole="CustMain" ToRole="CustCellphone" />
+          <NavigationProperty Name="CustMail" Relationship="Self.FK_CustMail_CustMain" FromRole="CustMain" ToRole="CustMail" />
+        </EntityType>
+        <Association Name="FK_CustCellphone_CustMain">
+          <End Role="CustMain" Type="Self.CustMain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustCellphone" Type="Self.CustCellphone" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustMain">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="CustCellphone">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustMail_CustMain">
+          <End Role="CustMain" Type="Self.CustMain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustMail" Type="Self.CustMail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CustMain">
+              <PropertyRef Name="CustID" />
+            </Principal>
+            <Dependent Role="CustMail">
+              <PropertyRef Name="CustID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CIFv2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustCellphones" EntityType="Self.CustCellphone" />
+          <EntitySet Name="CustMails" EntityType="Self.CustMail" />
+          <EntitySet Name="CustMains" EntityType="Self.CustMain" />
+          <AssociationSet Name="FK_CustCellphone_CustMain" Association="Self.FK_CustCellphone_CustMain">
+            <End Role="CustMain" EntitySet="CustMains" />
+            <End Role="CustCellphone" EntitySet="CustCellphones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustMail_CustMain" Association="Self.FK_CustMail_CustMain">
+            <End Role="CustMain" EntitySet="CustMains" />
+            <End Role="CustMail" EntitySet="CustMails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CIFv2ModelStoreContainer" CdmEntityContainer="CIFv2Entities">
+          <EntitySetMapping Name="CustCellphones">
+            <EntityTypeMapping TypeName="CIFv2Model.CustCellphone">
+              <MappingFragment StoreEntitySet="CustCellphone">
+                <ScalarProperty Name="CustID" ColumnName="CustID" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="CellphonePrevious" ColumnName="CellphonePrevious" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustMails">
+            <EntityTypeMapping TypeName="CIFv2Model.CustMail">
+              <MappingFragment StoreEntitySet="CustMail">
+                <ScalarProperty Name="CustID" ColumnName="CustID" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="MailPrevious" ColumnName="MailPrevious" />
+                <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustMains">
+            <EntityTypeMapping TypeName="CIFv2Model.CustMain">
+              <MappingFragment StoreEntitySet="CustMain">
+                <ScalarProperty Name="CustID" ColumnName="CustID" />
+                <ScalarProperty Name="CustPermID" ColumnName="CustPermID" />
+                <ScalarProperty Name="CustStatus" ColumnName="CustStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

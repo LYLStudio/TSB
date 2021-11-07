@@ -3,8 +3,7 @@
     using System;
     using System.Dynamic;
 
-    using Models;
-
+    using TSB.Models;
     using TSB.Models.Messages;
     using TSB.Services.CIF.Manager.Test.Models;
 
@@ -12,9 +11,9 @@
 
     public partial class Manager : ManagerServiceBase
     {
-        public TestRs TestRq(TestRq rq)
+        public TemplateRs TemplateRq(TemplateRq rq)
         {
-            var rs = new TestRs()
+            var rs = new TemplateRs()
             {
                 Header = new ResponseHeader()
                 {
@@ -33,9 +32,9 @@
                 {
                     try
                     {
-                        //TODO
+                        //TODO: do something logic here...
 
-                        o.RS.Payload.TestData = $"{nameof(TestRq)}: TEST DATA";
+                        o.RS.Payload.TestData = $"{nameof(TemplateRq)}: TEST DATA";
                         o.RS.Payload.Balance = o.RQ.Payload.Balance - o.RQ.Payload.Amt;
                         o.RS.Payload.PostedDate = $"{DateTime.Now:yyyy-MM-dd}";
 

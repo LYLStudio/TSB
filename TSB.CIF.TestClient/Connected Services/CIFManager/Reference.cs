@@ -17,8 +17,8 @@ namespace TSB.CIF.TestClient.CIFManager {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RequestBase", Namespace="http://schemas.datacontract.org/2004/07/TSB.Models.Messages")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.CheckRq))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.TestRq))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.QueryContactInfoRq))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.TemplateRq))]
     public partial class RequestBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -235,24 +235,24 @@ namespace TSB.CIF.TestClient.CIFManager {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckRq", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Email.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueryContactInfoRq", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Email.Models")]
     [System.SerializableAttribute()]
-    public partial class CheckRq : TSB.CIF.TestClient.CIFManager.RequestBase {
+    public partial class QueryContactInfoRq : TSB.CIF.TestClient.CIFManager.RequestBase {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TestRq", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Test.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TemplateRq", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Test.Models")]
     [System.SerializableAttribute()]
-    public partial class TestRq : TSB.CIF.TestClient.CIFManager.RequestBase {
+    public partial class TemplateRq : TSB.CIF.TestClient.CIFManager.RequestBase {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ResponseBase", Namespace="http://schemas.datacontract.org/2004/07/TSB.Models.Messages")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.CheckRs))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.TestRs))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.QueryContactInfoRs))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TSB.CIF.TestClient.CIFManager.TemplateRs))]
     public partial class ResponseBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -437,39 +437,33 @@ namespace TSB.CIF.TestClient.CIFManager {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CheckRs", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Email.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueryContactInfoRs", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Email.Models")]
     [System.SerializableAttribute()]
-    public partial class CheckRs : TSB.CIF.TestClient.CIFManager.ResponseBase {
+    public partial class QueryContactInfoRs : TSB.CIF.TestClient.CIFManager.ResponseBase {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TestRs", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Test.Models")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TemplateRs", Namespace="http://schemas.datacontract.org/2004/07/TSB.Services.CIF.Manager.Test.Models")]
     [System.SerializableAttribute()]
-    public partial class TestRs : TSB.CIF.TestClient.CIFManager.ResponseBase {
+    public partial class TemplateRs : TSB.CIF.TestClient.CIFManager.ResponseBase {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CIFManager.IService")]
     public interface IService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Test", ReplyAction="http://tempuri.org/IService/TestResponse")]
-        void Test();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/TemplateRq", ReplyAction="http://tempuri.org/IService/TemplateRqResponse")]
+        TSB.CIF.TestClient.CIFManager.TemplateRs TemplateRq(TSB.CIF.TestClient.CIFManager.TemplateRq request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/Test", ReplyAction="http://tempuri.org/IService/TestResponse")]
-        System.Threading.Tasks.Task TestAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/TemplateRq", ReplyAction="http://tempuri.org/IService/TemplateRqResponse")]
+        System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.TemplateRs> TemplateRqAsync(TSB.CIF.TestClient.CIFManager.TemplateRq request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/TestRq", ReplyAction="http://tempuri.org/IService/TestRqResponse")]
-        TSB.CIF.TestClient.CIFManager.TestRs TestRq(TSB.CIF.TestClient.CIFManager.TestRq request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/QueryContactInfoRq", ReplyAction="http://tempuri.org/IService/QueryContactInfoRqResponse")]
+        TSB.CIF.TestClient.CIFManager.QueryContactInfoRs QueryContactInfoRq(TSB.CIF.TestClient.CIFManager.QueryContactInfoRq request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/TestRq", ReplyAction="http://tempuri.org/IService/TestRqResponse")]
-        System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.TestRs> TestRqAsync(TSB.CIF.TestClient.CIFManager.TestRq request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CheckRq", ReplyAction="http://tempuri.org/IService/CheckRqResponse")]
-        TSB.CIF.TestClient.CIFManager.CheckRs CheckRq(TSB.CIF.TestClient.CIFManager.CheckRq request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CheckRq", ReplyAction="http://tempuri.org/IService/CheckRqResponse")]
-        System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.CheckRs> CheckRqAsync(TSB.CIF.TestClient.CIFManager.CheckRq request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/QueryContactInfoRq", ReplyAction="http://tempuri.org/IService/QueryContactInfoRqResponse")]
+        System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.QueryContactInfoRs> QueryContactInfoRqAsync(TSB.CIF.TestClient.CIFManager.QueryContactInfoRq request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -499,28 +493,20 @@ namespace TSB.CIF.TestClient.CIFManager {
                 base(binding, remoteAddress) {
         }
         
-        public void Test() {
-            base.Channel.Test();
+        public TSB.CIF.TestClient.CIFManager.TemplateRs TemplateRq(TSB.CIF.TestClient.CIFManager.TemplateRq request) {
+            return base.Channel.TemplateRq(request);
         }
         
-        public System.Threading.Tasks.Task TestAsync() {
-            return base.Channel.TestAsync();
+        public System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.TemplateRs> TemplateRqAsync(TSB.CIF.TestClient.CIFManager.TemplateRq request) {
+            return base.Channel.TemplateRqAsync(request);
         }
         
-        public TSB.CIF.TestClient.CIFManager.TestRs TestRq(TSB.CIF.TestClient.CIFManager.TestRq request) {
-            return base.Channel.TestRq(request);
+        public TSB.CIF.TestClient.CIFManager.QueryContactInfoRs QueryContactInfoRq(TSB.CIF.TestClient.CIFManager.QueryContactInfoRq request) {
+            return base.Channel.QueryContactInfoRq(request);
         }
         
-        public System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.TestRs> TestRqAsync(TSB.CIF.TestClient.CIFManager.TestRq request) {
-            return base.Channel.TestRqAsync(request);
-        }
-        
-        public TSB.CIF.TestClient.CIFManager.CheckRs CheckRq(TSB.CIF.TestClient.CIFManager.CheckRq request) {
-            return base.Channel.CheckRq(request);
-        }
-        
-        public System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.CheckRs> CheckRqAsync(TSB.CIF.TestClient.CIFManager.CheckRq request) {
-            return base.Channel.CheckRqAsync(request);
+        public System.Threading.Tasks.Task<TSB.CIF.TestClient.CIFManager.QueryContactInfoRs> QueryContactInfoRqAsync(TSB.CIF.TestClient.CIFManager.QueryContactInfoRq request) {
+            return base.Channel.QueryContactInfoRqAsync(request);
         }
     }
 }

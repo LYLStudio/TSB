@@ -27,7 +27,7 @@
                 _logger.Log(new { Request = p.RQ, Response = p.RS, Error = error }, (o) =>
                 {
                     //customized callback log, db log or something
-                    System.Diagnostics.Debug.WriteLine($"XX?=>[{o.Request?.Header?.MsgID}]");
+                    System.Diagnostics.Debug.WriteLine($"something here...{o}");
                 });
             }
         }

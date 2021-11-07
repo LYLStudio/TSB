@@ -2,7 +2,7 @@
 
 namespace TSB.Services.CIF.Manager.Test.Models
 {
-    public class TestRq : RequestBase
+    public class TemplateRq : RequestBase
     {
         /*
          * Payload Spec
@@ -13,7 +13,7 @@ namespace TSB.Services.CIF.Manager.Test.Models
          */
     }
 
-    public class TestRs : ResponseBase
+    public class TemplateRs : ResponseBase
     {
         /*
          * TestData     string

@@ -56,10 +56,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Connected Services\CIFManager\Service.wsdl" />
-    <None Include="Connected Services\CIFManager\TSB.CIF.TestClient.CIFManager.CheckRs.datasource">
+    <None Include="Connected Services\CIFManager\TSB.CIF.TestClient.CIFManager.QueryContactInfoRs.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\CIFManager\TSB.CIF.TestClient.CIFManager.TestRs.datasource">
+    <None Include="Connected Services\CIFManager\TSB.CIF.TestClient.CIFManager.TemplateRs.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

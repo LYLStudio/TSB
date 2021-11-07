@@ -7,10 +7,10 @@ using TSB.CIF.TestClient.CIFManager;
 namespace TSB.CIF.TestClient
 {
     class Program
-    {
+    {       
         static async Task Main(string[] args)
         {
-            var rq = new TestRq();
+            var rq = new QueryContactInfoRq();
 
             rq.Header = new RequestHeader()
             {
@@ -22,19 +22,19 @@ namespace TSB.CIF.TestClient
                 ClientIP = "127.0.0.1",
                 ServerIP = "128.0.0.1",
                 RequestTime = DateTime.Now,
-                UserID = "A123456789"
+                UserID = "A234567890"
             };
             rq.Payload = new Dictionary<string, object>()
             {
                 { "AcctID", "1010020210004150" },
                 { "Balance", 9001.12M },
-                { "Amt", 1.12M }
+                { "Amt", 1.12M },
+                { "Type", "ALL" }
             };
 
             using (var svc = new ServiceClient())
             {
-                await svc.TestRqAsync(rq);
-                await svc.CheckRqAsync(new CheckRq());
+                var rs = svc.QueryContactInfoRqAsync(rq);
             }
         }
     }
